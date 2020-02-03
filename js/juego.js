@@ -20,22 +20,22 @@ let Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 100, 430, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 130, 430, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 130, 100, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 160, 100, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 850, 400, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 760, 215, 30, 30, 2),
-    new Obstaculo('imagenes/valla_horizontal.png', 790, 215, 30, 30, 2),
-    new Obstaculo('imagenes/valla_vertical.png', 400, 380, 30, 30, 2),
-    new Obstaculo('imagenes/valla_vertical.png', 400, 410, 30, 30, 2),
-    new Obstaculo('imagenes/valla_vertical.png', 400, 115, 30, 30, 2),
-    new Obstaculo('imagenes/bache.png', 760, 500, 30, 30, 1),
-    new Obstaculo('imagenes/bache.png', 500, 210, 30, 30, 1),
-    new Obstaculo('imagenes/bache.png', 75, 275, 30, 30, 1),
-    new Obstaculo('imagenes/auto_verde_abajo.png', 850, 120, 15, 30, -1),
-    new Obstaculo('imagenes/auto_verde_derecha.png', 300, 475, 30, 15, -1)
+    new Obstaculo("imagenes/valla_horizontal.png", 70, 430, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 100, 430, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 130, 430, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 130, 100, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 160, 100, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 850, 400, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 760, 215, 30, 30, 2),
+    new Obstaculo("imagenes/valla_horizontal.png", 790, 215, 30, 30, 2),
+    new Obstaculo("imagenes/valla_vertical.png", 400, 380, 30, 30, 2),
+    new Obstaculo("imagenes/valla_vertical.png", 400, 410, 30, 30, 2),
+    new Obstaculo("imagenes/valla_vertical.png", 400, 115, 30, 30, 2),
+    new Obstaculo("imagenes/bache.png", 760, 500, 30, 30, 1),
+    new Obstaculo("imagenes/bache.png", 500, 210, 30, 30, 1),
+    new Obstaculo("imagenes/bache.png", 75, 275, 30, 30, 1),
+    new Obstaculo("imagenes/auto_verde_abajo.png", 850, 120, 15, 30, -1),
+    new Obstaculo("imagenes/auto_verde_derecha.png", 300, 475, 30, 15, -1)
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -57,7 +57,83 @@ let Juego = {
     new Obstaculo("", 887, 79, 56, 480, 2)
   ],
   // Los enemigos se agregaran en este arreglo.
-  enemigos: []
+  enemigos: [
+    new ZombieCaminante(
+      "imagenes/zombie4.png",
+      180,
+      200,
+      10,
+      10,
+      2,
+      { desdeX: 180, hastaX: 850, desdeY: 200, hastaY: 200 },
+      2
+    ),
+    new ZombieCaminante(
+      "imagenes/zombie3.png",
+      280,
+      400,
+      10,
+      10,
+      2,
+      { desdeX: 180, hastaX: 850, desdeY: 200, hastaY: 200 },
+      2
+    ),
+    new ZombieCaminante(
+      "imagenes/zombie2.png",
+      480,
+      300,
+      10,
+      10,
+      2,
+      { desdeX: 180, hastaX: 850, desdeY: 200, hastaY: 200 },
+      2
+    ),
+    new ZombieConductor(
+      "imagenes/tren_horizontal.png",
+      400,
+      322,
+      90,
+      30,
+      2,
+      {
+        desdeX: 0,
+        hastaX: 800,
+        desdeY: 0,
+        hastaY: 0
+      },
+      "h"
+    ),
+    new ZombieConductor(
+      "imagenes/tren_vertical.png",
+      644,
+      0,
+      30,
+      90,
+      2,
+      {
+        desdeX: 0,
+        hastaX: 0,
+        desdeY: 800,
+        hastaY: 0
+      },
+      "v"
+    ),
+    new ZombieConductor(
+      "imagenes/tren_vertical.png",
+      678,
+      450,
+      30,
+      90,
+      2,
+      {
+        desdeX: 0,
+        hastaX: 800,
+        desdeY: 0,
+        hastaY: 0
+      },
+      "v"
+    )
+  ]
 };
 
 /* Se cargan los recursos de las imagenes, para tener un facil acceso
@@ -164,6 +240,7 @@ Juego.dibujar = function() {
 
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
+    Dibujante.dibujarEntidad(enemigo);
     /* Completar */
   });
 
