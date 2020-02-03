@@ -217,7 +217,6 @@ Juego.capturarMovimiento = function(tecla) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
     de sus metodos  */
     this.jugador.mover(movX, movY);
-    /* COMPLETAR */
   }
 };
 
@@ -284,10 +283,11 @@ Juego.calcularAtaques = function() {
 Juego.chequearColisiones = function(x, y) {
   let puedeMoverse = true;
   this.obstaculos().forEach(function(obstaculo) {
-    if (this.intersecan(obstaculo, this.jugador, x, y)) {
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+    if (this.intersecan(obstaculo, this.jugador, x, y)) {      
+      obstaculo.chocar(this.jugador);
       puedeMoverse = false;
+      Obstaculo.potencia = 0;
+
     }
   }, this);
   return puedeMoverse;
