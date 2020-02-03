@@ -140,8 +140,7 @@ Juego.capturarMovimiento = function(tecla) {
   if (this.chequearColisiones(movX + this.jugador.x, movY + this.jugador.y)) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
     de sus metodos  */
-    Jugador.mover(movX, movY);
-    /* COMPLETAR */
+    this.jugador.mover(movX, movY);
   }
 };
 
@@ -154,7 +153,7 @@ Juego.dibujar = function() {
   /* Aca hay que agregar la logica para poder dibujar al jugador principal
   utilizando al dibujante y los metodos que nos brinda.
   "Dibujante dibuja al jugador" */
-  Dibujante.dibujarEntidad(Jugador);
+  Dibujante.dibujarEntidad(this.jugador);
 
   /* Completar */
 
@@ -207,10 +206,11 @@ Juego.calcularAtaques = function() {
 Juego.chequearColisiones = function(x, y) {
   let puedeMoverse = true;
   this.obstaculos().forEach(function(obstaculo) {
-    if (this.intersecan(obstaculo, this.jugador, x, y)) {
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+    if (this.intersecan(obstaculo, this.jugador, x, y)) {      
+      obstaculo.chocar(this.jugador);
       puedeMoverse = false;
+      Obstaculo.potencia = 0;
+
     }
   }, this);
   return puedeMoverse;
