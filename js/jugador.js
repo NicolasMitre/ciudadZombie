@@ -32,7 +32,7 @@ var Jugador = {
     this.x += nuevaX;
     this.y += nuevaY;
   },
-  perderVida: function(cantVidas) {
+  perderVidas: function(cantVidas) {
     this.vidas -= cantVidas;
     console.log(this.vidas);
   }
