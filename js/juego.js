@@ -65,7 +65,7 @@ let Juego = {
       10,
       10,
       2,
-      { desdeX: 180, hastaX: 850, desdeY: 200, hastaY: 200 },
+      { desdeX: 0, hastaX: 450, desdeY: 200, hastaY: 200 },
       2
     ),
     new ZombieCaminante(
@@ -75,7 +75,7 @@ let Juego = {
       10,
       10,
       2,
-      { desdeX: 180, hastaX: 850, desdeY: 200, hastaY: 200 },
+      { desdeX: 80, hastaX: 850, desdeY: 400, hastaY: 400 },
       2
     ),
     new ZombieCaminante(
@@ -85,7 +85,7 @@ let Juego = {
       10,
       10,
       2,
-      { desdeX: 180, hastaX: 850, desdeY: 200, hastaY: 200 },
+      { desdeX: 200, hastaX: 850, desdeY: 250, hastaY: 250 },
       2
     ),
     new ZombieConductor(
@@ -113,8 +113,8 @@ let Juego = {
       {
         desdeX: 0,
         hastaX: 0,
-        desdeY: 800,
-        hastaY: 0
+        desdeY: 0,
+        hastaY: 500
       },
       "v"
     ),
@@ -127,9 +127,9 @@ let Juego = {
       2,
       {
         desdeX: 0,
-        hastaX: 800,
+        hastaX: 0,
         desdeY: 0,
-        hastaY: 0
+        hastaY: 500
       },
       "v"
     )
@@ -258,7 +258,9 @@ Juego.dibujar = function() {
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
-  /* COMPLETAR */
+  this.enemigos.forEach(function(enemigo) {
+    enemigo.mover();
+  });
 };
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
@@ -270,11 +272,9 @@ Juego.calcularAtaques = function() {
     if (
       this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)
     ) {
-      /* Si el enemigo colisiona debe empezar su ataque
-      COMPLETAR */
+      enemigo.comenzarAtaque(this.jugador);
     } else {
-      /* Sino, debe dejar de atacar
-      COMPLETAR */
+      enemigo.dejarDeAtacar(this.jugador);
     }
   }, this);
 };
@@ -285,9 +285,9 @@ Juego.chequearColisiones = function(x, y) {
   let puedeMoverse = true;
   this.obstaculos().forEach(function(obstaculo) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+      obstaculo.chocar(this.jugador);
       puedeMoverse = false;
+      obstaculo.potencia = 0;
     }
   }, this);
   return puedeMoverse;
