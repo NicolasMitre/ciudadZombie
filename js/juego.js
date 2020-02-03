@@ -20,7 +20,22 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 100, 430, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 430, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 100, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 160, 100, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 850, 400, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 760, 215, 30, 30, 2),
+    new Obstaculo('imagenes/valla_horizontal.png', 790, 215, 30, 30, 2),
+    new Obstaculo('imagenes/valla_vertical.png', 400, 380, 30, 30, 2),
+    new Obstaculo('imagenes/valla_vertical.png', 400, 410, 30, 30, 2),
+    new Obstaculo('imagenes/valla_vertical.png', 400, 115, 30, 30, 2),
+    new Obstaculo('imagenes/bache.png', 760, 500, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 500, 210, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 75, 275, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 850, 120, 15, 30, -1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 300, 475, 30, 15, -1)
 
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
